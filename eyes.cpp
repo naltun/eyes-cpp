@@ -3,8 +3,9 @@
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
 #include <iostream>
 #include "eyes.h"
+
 using namespace std;
 
 int main() {
-    cout << run() << endl;
+    display();
 }
