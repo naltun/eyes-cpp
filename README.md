@@ -5,3 +5,12 @@
 ## C++ rewrite of [eyes.sh](https://github.com/naltun/eyes.sh)
 
 Details coming soon...
+
+### Installation
+1. git submodule update --init --recursive
+2. mkdir build
+3. cd build && cmake ..
+
+#### Dependencies
+1. cmake
+
