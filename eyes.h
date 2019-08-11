@@ -41,7 +41,35 @@ const char *menu =
 ************/
 
 void eyes() {
-    cout << "What do you want to do?" << endl;
+    std::string choice;
+    cout << "What do you want to do? ";
+    cin >> choice;
+
+    if (choice == "1")
+    {
+        cout << "WIP...\n" << endl;
+        eyes();
+    }
+
+    else if (choice == "12")
+    {
+        cout << "This program was created by Noah Altunian, and was adapted ";
+        cout << "from github.com/naltun/eyes.sh. It is licensed under the ";
+        cout << "terms of the MPL v. 2.0.\n" << endl;
+        eyes();
+    }
+
+    else if (choice == "13")
+    {
+        cout << "Bye" << endl;
+        exit(0);
+    }
+
+    else
+    {
+        cout << "Your choice is invalid.\n" << endl;
+        eyes();
+    }
 }
 
 void display() {
