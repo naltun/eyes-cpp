@@ -17,7 +17,7 @@ const char *banner =
 	" | |__ _   _  ___  ___\n"
 	" |  __| | | |/ _ \\/ __|\n"
 	" | |__| |_| |  __/\\__ \\\n"
-	" \\____/\\__, |\\___||___/ v0.0.11\n"
+	" \\____/\\__, |\\___||___/ v0.0.12\n"
 	"        __/ | Now made with C++!\n"
 	"       |____/\n";
 
@@ -40,51 +40,48 @@ const char *menu =
 * Functions *
 ************/
 
+std::string get_info(std::string url) {
+    auto r = cpr::Get(cpr::Url{url});
+    if (r.status_code >= 400)
+    {
+        std::string err = "Something went wrong.";
+        return err;
+    }
+
+    else
+    {
+        return r.text;
+    }
+}
+
 void eyes() {
     std::string choice;
+    std::string resp;
+    std::string target;
+    std::ostringstream url;
+
+    cout << menu << endl;
     cout << "What do you want to do? ";
     cin >> choice;
 
     if (choice == "1")
     {
-        std::string target;
-        std::ostringstream url;
         cout << "Enter a domain or IP address: ";
         cin >> target;
         url << "http://api.hackertarget.com/whois/?q=" << target;
-
-        auto r = cpr::Get(cpr::Url{url.str()});
-        if (r.status_code >= 400)
-        {
-            cerr << "Something went wrong." << endl << endl;
-        }
-
-        else
-        {
-            cout << r.text << endl;
-        }
+        resp = get_info(url.str());
+        cout << resp << endl;
 
         eyes();
     }
 
     else if (choice == "4")
     {
-        std::string target;
-        std::ostringstream url;
         cout << "Enter a domain or IP address: ";
         cin >> target;
         url << "http://api.hackertarget.com/nmap/?q=" << target;
-
-        auto r = cpr::Get(cpr::Url{url.str()});
-        if (r.status_code >= 400)
-        {
-            cerr << "Something went wrong." << endl << endl;
-        }
-
-        else
-        {
-            cout << r.text << endl;
-        }
+        resp = get_info(url.str());
+        cout << resp << endl;
 
         eyes();
     }
@@ -111,7 +108,6 @@ void eyes() {
 }
 
 void run() {
-    cout << banner << "\n";
-    cout << menu << "\n";
+    cout << banner << endl;
     eyes();
 }
