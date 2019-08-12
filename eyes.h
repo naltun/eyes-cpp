@@ -17,7 +17,7 @@ const char *banner =
 	" | |__ _   _  ___  ___\n"
 	" |  __| | | |/ _ \\/ __|\n"
 	" | |__| |_| |  __/\\__ \\\n"
-	" \\____/\\__, |\\___||___/ v0.0.3\n"
+	" \\____/\\__, |\\___||___/ v0.0.9\n"
 	"        __/ | Now made with C++!\n"
 	"       |____/\n";
 
@@ -47,7 +47,16 @@ void eyes() {
 
     if (choice == "1")
     {
-        cout << "WIP...\n" << endl;
+        std::string target;
+        std::ostringstream url;
+        cout << "Enter a domain or IP address: ";
+        cin >> target;
+        url << "http://api.hackertarget.com/whois/?q=" << target;
+
+        // Need to add try/catch
+        auto r = cpr::Get(cpr::Url{url.str()});
+        cout << r.text << endl;
+
         eyes();
     }
 
@@ -72,7 +81,7 @@ void eyes() {
     }
 }
 
-void display() {
+void run() {
     cout << banner << "\n";
     cout << menu << "\n";
     eyes();
