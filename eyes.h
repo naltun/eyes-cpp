@@ -53,9 +53,16 @@ void eyes() {
         cin >> target;
         url << "http://api.hackertarget.com/whois/?q=" << target;
 
-        // Need to add try/catch
         auto r = cpr::Get(cpr::Url{url.str()});
-        cout << r.text << endl;
+        if (r.status_code >= 400)
+        {
+            cerr << "Something went wrong." << endl << endl;
+        }
+
+        else
+        {
+            cout << r.text << endl;
+        }
 
         eyes();
     }
