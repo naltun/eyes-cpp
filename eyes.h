@@ -17,7 +17,7 @@ const char *banner =
 	" | |__ _   _  ___  ___\n"
 	" |  __| | | |/ _ \\/ __|\n"
 	" | |__| |_| |  __/\\__ \\\n"
-	" \\____/\\__, |\\___||___/ v0.0.15\n"
+	" \\____/\\__, |\\___||___/ v0.0.16\n"
 	"        __/ | Now made with C++!\n"
 	"       |____/\n";
 
@@ -111,6 +111,35 @@ void eyes() {
         cout << resp << endl;
 
         eyes();
+    }
+
+    else if (choice == "7")
+    {
+        cout << "This feature makes a direct call to the target -- would you like to continuye? [Y/n] ";
+        cin >> choice;
+        if (choice == "y")
+        {
+            cout << "Enter domain (without protocol): ";
+            cin >> target;
+            url << "http://" << target << "/robots.txt";
+            resp = get_info(url.str());
+            cout << resp << endl << endl;
+
+            eyes();
+        }
+
+        else if (choice == "n")
+        {
+            cout << "Going back to menu..." << endl << endl;
+            eyes();
+        }
+
+        else
+        {
+            cout << "Your choice is invalid." << endl << endl;
+            eyes();
+        }
+        
     }
 
     else if (choice == "12")
