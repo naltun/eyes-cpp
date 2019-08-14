@@ -17,7 +17,7 @@ const char *banner =
 	" | |__ _   _  ___  ___\n"
 	" |  __| | | |/ _ \\/ __|\n"
 	" | |__| |_| |  __/\\__ \\\n"
-	" \\____/\\__, |\\___||___/ v0.0.13\n"
+	" \\____/\\__, |\\___||___/ v0.0.14\n"
 	"        __/ | Now made with C++!\n"
 	"       |____/\n";
 
@@ -39,6 +39,11 @@ const char *menu =
 /************
 * Functions *
 ************/
+
+void handler(int sig) {
+    cout << "\nBye" << endl;
+    exit(0);
+}
 
 std::string get_info(std::string url) {
     auto r = cpr::Get(cpr::Url{url});

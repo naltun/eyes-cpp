@@ -3,11 +3,13 @@
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
 #include <iostream>
 #include <sstream>
+#include <signal.h>
 #include <cpr/cpr.h>
 #include "eyes.h"
 
 using namespace std;
 
 int main() {
+    signal(SIGINT, handler);
     run();
 }
