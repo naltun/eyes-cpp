@@ -17,7 +17,7 @@ const char *banner =
 	" | |__ _   _  ___  ___\n"
 	" |  __| | | |/ _ \\/ __|\n"
 	" | |__| |_| |  __/\\__ \\\n"
-	" \\____/\\__, |\\___||___/ v0.0.14\n"
+	" \\____/\\__, |\\___||___/ v0.0.15\n"
 	"        __/ | Now made with C++!\n"
 	"       |____/\n";
 
@@ -96,6 +96,17 @@ void eyes() {
         cout << "Enter a domain or IP address: ";
         cin >> target;
         url << "http://api.hackertarget.com/nmap/?q=" << target;
+        resp = get_info(url.str());
+        cout << resp << endl;
+
+        eyes();
+    }
+
+    else if (choice == "5")
+    {
+        cout << "Enter a domain or IP address: ";
+        cin >> target;
+        url << "http://api.hackertarget.com/httpheaders/?q=" << target;
         resp = get_info(url.str());
         cout << resp << endl;
 
