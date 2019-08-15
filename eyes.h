@@ -17,7 +17,7 @@ const char *banner =
 	" | |__ _   _  ___  ___\n"
 	" |  __| | | |/ _ \\/ __|\n"
 	" | |__| |_| |  __/\\__ \\\n"
-	" \\____/\\__, |\\___||___/ v0.0.16\n"
+	" \\____/\\__, |\\___||___/ v0.0.17\n"
 	"        __/ | Now made with C++!\n"
 	"       |____/\n";
 
@@ -49,7 +49,7 @@ std::string get_info(std::string url) {
     auto r = cpr::Get(cpr::Url{url});
     if (r.status_code >= 400)
     {
-        std::string err = "Something went wrong.";
+        std::string err = "\nSomething went wrong.\n";
         return err;
     }
 
@@ -140,6 +140,17 @@ void eyes() {
             eyes();
         }
         
+    }
+
+    else if (choice == "9")
+    {
+        cout << "Enter IP address: ";
+        cin >> target;
+        url << "http://ipinfo.io/" << target << "/geo";
+        resp = get_info(url.str());
+        cout << resp << endl << endl;
+
+        eyes();
     }
 
     else if (choice == "12")
